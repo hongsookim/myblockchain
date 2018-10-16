@@ -6,33 +6,23 @@ import java.sql.Timestamp;
 import util.Util;
 
 public class Transaction {
-	String signature;
-	PublicKey sender;
-	PublicKey receiver;
+	String sender;
+	String receiver;
 	double amount;
-	Timestamp timestamp;
-
-	public String getSignature() {
-		return signature;
-	}
 	
-	public void setSignature(String signature) {
-		this.signature = signature;
-	}
-	
-	public PublicKey getSender() {
+	public String getSender() {
 		return sender;
 	}
 
-	public void setSender(PublicKey sender) {
+	public void setSender(String sender) {
 		this.sender = sender;
 	}
 
-	public PublicKey getReceiver() {
+	public String getReceiver() {
 		return receiver;
 	}
 
-	public void setReceiver(PublicKey receiver) {
+	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
 
@@ -43,33 +33,14 @@ public class Transaction {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
-	public Timestamp getTimestamp() {
-		return timestamp;
-	}
-	
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
-	}
 
 	public String getInformation() {
-		return "<"+ signature + ">\n" +
-				new Util().getHash(sender.toString()) + "-->" +
-				new Util().getHash(receiver.toString()) + ":" +
-				amount + "(" + timestamp + ")";
+		return "Sent " + amount + " coins from " +sender+ " to "+receiver +"."; 
 	}
 	
-	public String getData() {
-		return new Util().getHash(sender.toString()) + "-->" +
-				new Util().getHash(receiver.toString()) + ":" +
-				amount + "(" + timestamp + ")";
-	}
-
-	public Transaction( Wallet wallet, PublicKey receiver, double amount, String timestamp) throws Exception {
-		this.sender = wallet.getPublicKey();
+	public Transaction( String sender, String receiver, double amount) throws Exception {
+		this.sender = sender;
 		this.receiver = receiver;
 		this.amount = amount;
-		this.timestamp = java.sql.Timestamp.valueOf(timestamp);
-		this.signature = wallet.sign(getData());
 	}
 }
