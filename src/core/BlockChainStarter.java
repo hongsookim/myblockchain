@@ -24,7 +24,7 @@ public class BlockChainStarter {
 		    wallet3.setFromFile("private3.pem", "public3.pem");
 		    
 		    //blockID, previousBlockHash, nonce, transactionList
-		    Block block1 = new Block( 1, null, 0, new ArrayList<Transaction>() );
+		    Block block1 = new Block( 1, null, 0, new ArrayList<Transaction>() );  
 		    block1.mine();
 		    block1.showInformation();
 		    
