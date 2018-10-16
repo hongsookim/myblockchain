@@ -3,12 +3,8 @@ package core;
 import util.*;
 
 import java.util.ArrayList;
-import java.math.BigInteger;
-import java.security.Signature;
 
 public class Block {
-	private static final String ALGORITHM = "SHA1withECDSA";
-	
 	private int blockID;
 	private String previousBlockHash;
 	private int nonce;
@@ -45,23 +41,8 @@ public class Block {
 		this.transactionList = transactionList;
 	}
 	
-	private boolean verifyTransaction(Transaction transaction) throws Exception {
-		Signature signature;
-		signature = Signature.getInstance(ALGORITHM);
-		byte[] baText = transaction.getData().getBytes("UTF-8");
-		signature.initVerify(transaction.getSender());
-		signature.update(baText);
-		return signature.verify(new BigInteger(transaction.getSignature(), 16).toByteArray());
-	}
-	
 	public void addTransaction(Transaction transaction) throws Exception {
-		if(verifyTransaction(transaction)) {
-			System.out.println("Good Transaction!");
-			transactionList.add(transaction);
-		} else {
-			System.out.println("Bad Transaction!");			
-		}
-		
+		transactionList.add(transaction);
 	}
 
 	  public void showInformation() {

@@ -87,7 +87,7 @@ public class EC {
 	    BufferedReader br = new BufferedReader(new FileReader(filename));
 	    String line;
 	    while ((line = br.readLine()) != null)
-	      pem += line + "\n";
+	    	pem += line + "\n";
 	    br.close();
 	    return pem;
 	}  
