@@ -50,7 +50,7 @@ public class EC {
 		      throws FileNotFoundException, IOException, NoSuchAlgorithmException, 
 		      InvalidKeySpecException {
 	    String data = readString(privateKeyName);
-	    System.out.println("EC 개인키를 " + privateKeyName + "로부터 불러왔습니다.");
+	    System.out.println("Read EC Private Key from " + privateKeyName + ".");
 	    System.out.print(data);
 
 	    data = data.replaceAll("-----BEGIN EC PRIVATE KEY-----", "");
@@ -68,7 +68,7 @@ public class EC {
 		      throws FileNotFoundException, IOException, NoSuchAlgorithmException, 
 		      InvalidKeySpecException {
 	    String data = readString(publicKeyName);
-	    System.out.println("EC 개인키를 " + publicKeyName + "로부터 불러왔습니다.");
+	    System.out.println("Read EC Private Key from " + publicKeyName + ".");
 	    System.out.print(data);
 
 	    data = data.replaceAll("-----BEGIN EC PUBLIC KEY-----", "");
